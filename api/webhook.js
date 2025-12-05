@@ -4,7 +4,7 @@ const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID;
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method === 'GET') {
     const mode = req.query['hub.mode'];
     const token = req.query['hub.verify_token'];
@@ -50,7 +50,7 @@ const handleMessage = async (from, msg) => {
   } else if (msg.includes('sound') || msg.includes('event')) {
     response = 'We have Bose and JBL products for sound and events. Type "bose" or "jbl" for more info.';
   } else {
-    response = 'Hello! I\'m here to help with Bose and JBL products for sound and events. Ask about Bose or JBL!';
+    response = 'Hello! I\'m here to help with Bose and JBL products for sound and event. Ask about Bose or JBL!';
   }
 
   await sendMessage(from, response);
